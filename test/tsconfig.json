@@ -1,10 +1,6 @@
 {
     "include": [
-        "src"
-    ],
-    "exclude": [
-        "node_modules",
-        "test"
+        "."
     ],
     "compilerOptions": {
         /* Language and Environment */
@@ -12,7 +8,7 @@
         
         /* Modules */
         "module": "commonjs",
-        "rootDir": "./src",
+        "rootDir": "..",
         "moduleResolution": "node",
         "outDir": "./dist",
         
@@ -22,7 +18,7 @@
         "skipLibCheck": true,
         "noImplicitAny": true,
 
-        "baseUrl": "./src",
+        "baseUrl": "../src",
         "paths": {
             "@libs/*": ["libs/*"],
             "@models/*": ["models/*"],
@@ -32,5 +28,8 @@
             "@classes/*": ["classes/*"],
             "@middlewares/*": ["middlewares/*"],
         }
+    },
+    "ts-node": {
+        "transpileOnly": true,
     }
 }

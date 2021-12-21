@@ -4,24 +4,46 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "test": "./node_modules/.bin/mocha ./test/**/*.ts -r ts-node/register",
+        "test": "./node_modules/.bin/mocha -r ts-node/register -r tsconfig-paths/register -r test/helpers/hooks.ts ./test/*.ts ./test/**/*.ts ",
         "build": "tsc",
-        "start": "node dist/app.js"
+        "clear-dist": "rm -rf dist/*",
+        "start": "node -r module-alias/register dist/app.js",
+        "dev": "npx nodemon --exec \"ts-node -r tsconfig-paths/register src/app.ts\" --watch src -e ts"
     },
     "author": "HelloWorld makers",
     "license": "ISC",
     "private": true,
     "dependencies": {
+        "bcrypt": "^5.0.1",
         "dotenv": "^10.0.0",
-        "ejs": "^3.1.6",
-        "express": "^4.17.1"
+        "express": "^4.17.1",
+        "express-session": "^1.17.2",
+        "module-alias": "^2.2.2",
+        "mongoose": "^6.1.1",
+        "nanoid": "^3.1.30",
+        "passport": "^0.5.2",
+        "passport-local": "^1.0.0"
     },
     "devDependencies": {
+        "@types/bcrypt": "^5.0.0",
         "@types/express": "^4.17.13",
+        "@types/express-session": "^1.17.4",
         "@types/mocha": "^9.0.0",
         "@types/node": "^16.11.7",
+        "@types/passport": "^1.0.7",
+        "@types/passport-local": "^1.0.34",
         "mocha": "^9.1.3",
+        "mongodb-memory-server": "^8.0.4",
         "ts-node": "^10.4.0",
+        "tsconfig-paths": "^3.11.0",
         "typescript": "^4.4.4"
+    },
+    "_moduleAliases": {
+        "@libs": "dist/libs",
+        "@models": "dist/models",
+        "@utils": "dist/utils",
+        "@routes": "dist/routes",
+        "@classes": "dist/classes",
+        "@middlewares": "dist/middlewares"
     }
 }
