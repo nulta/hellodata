@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>로그인</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script src="global.js"></script>
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+    <div class="main-window">
+        <div class="window-title">
+            <button id="tab-login" class="window-title-sidebtn active" role="button">로그인</button>
+            <button id="tab-register" class="window-title-sidebtn" role="button">계정 등록</button>
+        </div>
+        <div id="window-content-login" class="window-content">
+            <form id="form-login">
+                <div class="input-group">
+                    <label for="input-login-email">Email</label>
+                    <input type="email" id="input-login-email" placeholder="이메일" required>
+                </div>
+                <div class="input-group">
+                    <label for="input-login-password">Password</label>
+                    <input type="password" id="input-login-password" placeholder="비밀번호" required>
+                </div>
+                <div class="input-group align-right">
+                    <button id="button-login" type="button" class="btn btn-primary-outline">로그인</button>
+                </div>
+            </form>
+        </div>
+        <div id="window-content-register" class="window-content hidden">
+            <form id="form-register">
+                <div class="input-group">
+                    <label for="input-login-email">Email</label>
+                    <input type="email" id="input-register-email" placeholder="이메일" required>
+                </div>
+                <div class="input-group">
+                    <label for="input-login-email">Name</label>
+                    <input type="text" id="input-register-name" placeholder="닉네임" required minlength="3" maxlength="40">
+                </div>
+                <div class="input-group">
+                    <label for="input-login-password">Password</label>
+                    <input type="password" id="input-register-password" placeholder="비밀번호" required minlength="6" maxlength="1000">
+                    <input type="password" id="input-register-password2" placeholder="비밀번호 확인" required minlength="6" maxlength="1000">
+                </div>
+                <div class="input-group align-right">
+                    <button id="button-register" class="btn btn-primary-outline" type="button">계정 등록</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+
+</html>

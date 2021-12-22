@@ -1,0 +1,153 @@
+@font-face {
+    font-family: 'D2Coding';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Window */
+
+.main-window {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    background-color: #fcfcfc;
+    color: #111;
+    border-radius: 5px;
+    box-shadow: #0009 0px 0px 20px;
+}
+
+.window-title {
+    background-color: #00ffaa;
+    color: #333;
+    border-radius: 5px 5px 0 0;
+    padding: 6px 8px 6px 0px;
+    display: flex;
+}
+
+.window-title-text {
+    margin-left: 10px;
+    margin-bottom: 4px;
+    display: inline-block
+}
+
+.window-title-sidebtn {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: 1.35em;
+    font-weight: 200;
+    color: #00b679;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    transition: color 0.2s ease-in-out;
+}
+
+.window-title-sidebtn:not(:last-child)::after {
+    border-right: 1px solid #00db92;
+    content: "";
+    margin-left: 10px;
+}
+
+.window-title-sidebtn {
+    padding-left: 10px;
+}
+
+.window-title-sidebtn:last-child {
+    padding-right: 10px;
+}
+
+.window-title-sidebtn:hover {
+    font-weight: 500;
+}
+
+.window-title-sidebtn.active {
+    font-size: 1.35em;
+    margin: 0;
+    font-weight: 500;
+    color: #333;
+    cursor: default;
+}
+
+.window-content {
+    padding: 20px;
+    padding-bottom: 25px;
+    transition: height 300ms ease-in-out;
+}
+
+
+/* Buttons */
+
+.btn {
+    color: #333;
+    border-radius: 3px;
+    padding: 10px 11px 9px 11px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: ease-in-out 100ms;
+    transition-property: color, border-color, background-color;
+    line-height: 1;
+}
+
+.btn-primary {
+    background-color: #00ffaa;
+    border: 1px solid #00ca87;
+}
+
+.btn-primary:hover {
+    background-color: #8effd9;
+}
+
+.btn-primary:active {
+    border-color: #00ffaa;
+    background-color: #00d68f;
+    color: white;
+}
+
+.btn-primary-outline {
+    background-color: transparent;
+    color: #00ca87;
+    border: 1px solid #00ca87;
+}
+
+.btn-primary-outline:hover {
+    background-color: #00ffaa33;
+}
+
+.btn-primary-outline:active {
+    border-color: #00ca87;
+    background-color: #00ffaa8a;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #00fff2;
+    border: 1px solid #00b4ab;
+}
+
+.btn-secondary-outline {
+    background-color: transparent;
+    color: #00b4ab;
+    border: 1px solid #00b4ab;
+}
+
+
+/* Utils */
+
+.inline {
+    display: inline-block;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.hidden {
+    display: none;
+}

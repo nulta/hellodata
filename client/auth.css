@@ -1,0 +1,39 @@
+body {
+    background-color: #222;
+    background-image: url("img/bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #fafafa;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9em;
+    font-family: D2Coding, monospace;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    transition: 100ms ease-out;
+    transition-property: background-color, color;
+    outline: none;
+}
+
+input:focus {
+    background-color: #333;
+    color: #fafafa;
+}
+
+.validated input:invalid {
+    border-color: #ff2b60;
+}
+
+.validated input:invalid:focus {
+    border-color: #ff006a;
+}
