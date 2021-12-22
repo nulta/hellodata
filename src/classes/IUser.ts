@@ -27,4 +27,5 @@ export type UserPublicInfo = {
 // Static Methods
 export interface IUserModel extends Model<IUser> {
     createUser(data: UserCreateFields): Promise<IUser & MongooseDocument>
+    isValidPassword(password: string): [boolean, string]
 }
