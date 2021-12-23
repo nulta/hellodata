@@ -39,11 +39,10 @@ $("#button-create-project").on("click", () => {
         .then(async res => {
             if (res.status === 200) {
                 let data = await res.json();
-                console.log(data)
-                $Page.addProjectInfo(data._id, data.name, data.desc, "", data.public);
+                let ownerName = await HDT.getCurrentUser().then(user => user.name);
+                $Page.addProjectInfo(data._id, data.name, data.desc, ownerName, data.public);
             } else {
                 let data = await res.json();
-                console.log(data)
                 alert(data.error);
             }
         })

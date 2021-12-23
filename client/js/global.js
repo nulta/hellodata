@@ -17,7 +17,7 @@ HDT.fileLoaded = function(filename) {
 };
 
 HDT.getCurrentUser = async function() {
-    if (HDT.getCurrentUser.user) {
+    if (HDT.getCurrentUser.user !== undefined) {
         // User is already cached
         return HDT.getCurrentUser.user;
     }
@@ -25,9 +25,11 @@ HDT.getCurrentUser = async function() {
     let res = await $A.get("/api/auth/user");
     if (res.status === 200) {
         let user = await res.json();
+        user = user.user;
         HDT.getCurrentUser.user = user;
         return user;
     } else {
+        HDT.getCurrentUser.user = null;
         return null;
     }
 };
@@ -108,6 +110,26 @@ $Page.requireAuth = async function() {
         window.location.href = "/auth";
     }
 };
+
+// .current-user-info Handling
+$(async() => {
+    if ($(".current-user-info").length) {
+        let user = await HDT.getCurrentUser();
+        if (!user) {
+            $(".current-user-info").text("로그인");
+            $(".current-user-info").on("click", () => {
+                window.location.href = "/auth";
+            })
+        } else {
+            $(".current-user-info").text(user.name);
+            $(".current-user-info").on("click", () => {
+                if (confirm("로그아웃하시겠습니까?")) {
+                    HDT.logout();
+                }
+            })
+        }
+    }
+})
 
 
 HDT.fileLoaded.startTime = new Date().getTime();

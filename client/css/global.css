@@ -193,3 +193,16 @@ button {
 .hidden {
     display: none;
 }
+
+.current-user-info {
+    position: fixed;
+    top: 0px;
+    right: 15px;
+    color: #fff;
+    background-color: #00000055;
+    padding: 6px;
+    border-radius: 0 0 5px 5px;
+    line-height: 1;
+    font-family: "D2Coding", monospace;
+    cursor: pointer;
+}
