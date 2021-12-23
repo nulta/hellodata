@@ -19,7 +19,7 @@ fs.readdirSync(routerPath).forEach(file => {
             return
         log.info("Loading route: " + file)
         const route = require(path.join(routerPath, file))
-        router.use("/api/", route.default)
+        router.use("/", route.default)
     }
 })
 
