@@ -5,14 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
+    <title>Hello, Data!</title>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
-    <script src="global.js"></script>
+    <script src="js/global.js"></script>
     <link rel="stylesheet" href="css/global.css">
 </head>
 
 <body>
-    <!-- Body -->
+    <noscript>
+        This page requires JavaScript.
+    </noscript>
+    <script>
+        HDT.getCurrentUser().then(user => {
+            if (user)
+                window.location = "./projects";
+            else
+                window.location = "./auth";
+        })
+    </script>
 </body>
 
 </html>

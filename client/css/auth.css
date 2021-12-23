@@ -1,11 +1,5 @@
 body {
-    background-color: #222;
-    background-image: url("img/bg.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     color: #fafafa;
-    margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
