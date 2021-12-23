@@ -32,5 +32,5 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((user, done) => {
-    done(null, {user})
+    done(null, user as Express.User)
 })

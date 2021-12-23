@@ -26,7 +26,7 @@ router.post("/auth/logout", authRequired(), (req, res) => {
 router.post("/auth/login", passport.authenticate("local"), (req, res) => {
     res.json({
         success: true,
-        user: filterObject(req.user!, ["_id", "username", "email", "avatar", "meta"])
+        user: filterObject(req.user!, ["_id", "name", "email", "avatar", "meta"])
     })
 })
 
@@ -44,10 +44,19 @@ router.post("/auth/register", (req, res, next) => {
     }).then(user => {
         res.json({
             success: true,
-            user: filterObject(req.user!, ["_id", "username", "email", "avatar", "meta"])
         })
     }).catch(next)
 })
 
+/**
+ * GET /api/auth/user
+ * Return the current user information
+ */
+router.get("/auth/user", authRequired(), (req, res) => {
+    res.json({
+        success: true,
+        user: filterObject(req.user!, ["_id", "name", "email", "avatar", "meta"])
+    })
+})
 
 export default router
