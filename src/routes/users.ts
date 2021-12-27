@@ -4,37 +4,6 @@ import filterObject from "@libs/filter_object"
 import User from "@models/user"
 const router = Router()
 
-// TODO: Authentication
-
-/**
- * GET /api/users
- * Get all users' information
- * ! Should not be present in production.
- */
-router.get("/users", (req, res, next) => {
-    User.find()
-        .select("_id name email avatar")
-        .then(users => {
-            res.json(users)
-        })
-        .catch(next)
-        
-})
-
-/**
- * GET /api/users/verbose
- * Get all users' information with more information
- * ! Should not be present in production.
- */
-router.get("/users/verbose", (req, res, next) => {
-    User.find()
-        .then(users => {
-            res.json(users)
-        })
-        .catch(next)
-        
-})
-
 /**
  * GET /api/users/:id
  * Get a user
@@ -56,6 +25,12 @@ router.get("/users/:id", (req, res, next) => {
  * Update a user
  */
 router.patch("/users/:id", (req, res, next) => {
+    if (req.user?._id != req.params.id) {
+        return res.status(403).json({
+            error: "Cannot update other users"
+        })
+    }
+
     req.body = filterObject(req.body, ["name", "email", "password", "avatar", "meta"])
     User.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .select("_id name email avatar meta")
