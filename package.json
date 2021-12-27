@@ -12,7 +12,7 @@
     },
     "author": "HelloWorld makers",
     "license": "ISC",
-    "private": true,
+    "private": false,
     "dependencies": {
         "bcrypt": "^5.0.1",
         "cors": "^2.8.5",
