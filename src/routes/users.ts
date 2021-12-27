@@ -31,7 +31,7 @@ router.patch("/users/:id", (req, res, next) => {
         })
     }
 
-    req.body = filterObject(req.body, ["name", "email", "password", "avatar", "meta"])
+    req.body = filterObject(req.body, ["name", "password", "avatar", "meta"])
     User.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .select("_id name email avatar meta")
     .then(user => {
@@ -41,6 +41,10 @@ router.patch("/users/:id", (req, res, next) => {
             })
             return
         }
+
+        // Update the user session
+        req.session.passport.user.name = user.name
+        req.session.passport.user.meta = user.meta
 
         // filtered with select()
         res.json(user)
