@@ -45,9 +45,32 @@ HDT.logout = async function() {
 }
 
 /**
- * Global util namespace.
+ * Open a context menu on given position.
+ * @param {number} x 
+ * @param {number} y 
+ * @param {Record<string, function():void>} data
  */
-const $U = {};
+HDT.contextMenu = function(x, y, data) {
+    let menu = $("#context-menu");
+    menu.empty();
+    for (let key in data) {
+        menu.append(
+            $("<button>").text(key).on("click", data[key])
+        )
+    }
+    menu.css("left", x);
+    menu.css("top", y);
+    $("#context-menu-container").addClass("active");
+
+    if (x + menu.width() > window.innerWidth) {
+        x = x - menu.width();
+        menu.css("left", x);
+    }
+
+    $("#context-menu-container")[0].onclick = function(ev) {
+        $(this).removeClass("active");
+    }
+}
 
 
 /**
@@ -177,10 +200,11 @@ $(async() => {
             })
         } else {
             $(".current-user-info").text(user.name);
-            $(".current-user-info").on("click", () => {
-                if (confirm("로그아웃하시겠습니까?")) {
-                    HDT.logout();
-                }
+            $(".current-user-info").on("click", (ev) => {
+                HDT.contextMenu(ev.clientX, ev.clientY, {
+                    "로그아웃": HDT.logout,
+                    "설정": () => { document.location = "/settings" }
+                })
             })
         }
     }

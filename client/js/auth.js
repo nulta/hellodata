@@ -81,6 +81,9 @@ $("#button-register").on("click", () => {
         .then(async res => {
             if (res.status === 200) {
                 console.log("OK!");
+                alert("계정 등록 성공!");
+                $("#tab-login").trigger("click");
+                $("#input-login-email").val(email);
             } else if (res.status === 400) {
                 let data = await res.json();
                 alert("계정 등록 실패: " + data.error);
