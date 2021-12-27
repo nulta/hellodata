@@ -13,7 +13,12 @@
 </head>
 
 <body>
-    <div class="current-user-info"></div>
+    <div class="rightmost-buttons">
+        <div class="current-user-info"></div>
+        <a href="/">
+            <div class="go-to-mainpage">홈으로</div>
+        </a>
+    </div>
     <div class="main-window">
         <div class="window-title">
             <button id="tab-login" class="window-title-sidebtn active" role="button">로그인</button>
@@ -46,8 +51,8 @@
                 </div>
                 <div class="input-group">
                     <label for="input-login-password">Password</label>
-                    <input type="password" id="input-register-password" placeholder="비밀번호" required minlength="6" maxlength="1000">
-                    <input type="password" id="input-register-password2" placeholder="비밀번호 확인" required minlength="6" maxlength="1000">
+                    <input type="password" id="input-register-password" placeholder="비밀번호" required minlength="8" maxlength="1000">
+                    <input type="password" id="input-register-password2" placeholder="비밀번호 확인" required minlength="8" maxlength="1000">
                 </div>
                 <div class="input-group align-right">
                     <button id="button-register" class="btn btn-primary-outline" type="button">계정 등록</button>

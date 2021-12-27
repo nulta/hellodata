@@ -1,2 +1,4 @@
-import documents from "./documents_static"
-export default documents
+import {Router} from "express"
+import documentStatic from "./documents_static"
+
+export default documentStatic

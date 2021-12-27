@@ -4,6 +4,7 @@ dotenv.config()
 
 const config = {
     server_port: parseInt(process.env.SERVER_PORT || "3000"),
+    server_host: process.env.SERVER_HOST || "localhost",
     db: {
         connection: process.env.DB_CONNECTION || "mongodb://localhost:27017/",
         database: process.env.DB_DATABASE || "helloData",

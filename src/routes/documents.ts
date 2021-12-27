@@ -65,7 +65,7 @@ router.get("/projects/:projectId/documents/:documentId", (req, res, next) => {
 })
 
 /**
- * PUT /api/docs/:id
+ * PATCH /projects/:projectId/documents/:documentId
  * Update a document
  */
 router.patch("/projects/:projectId/documents/:documentId", (req, res, next) => {

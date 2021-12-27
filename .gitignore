@@ -2,3 +2,4 @@
 node_modules
 dist
 설계
+tsconfig.tsbuildinfo

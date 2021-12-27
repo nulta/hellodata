@@ -10,7 +10,7 @@ HDT.fileLoaded = function(filename) {
         'color: #00dd88',
         'color: inherit',
         filename,
-        'color: #00fff877',
+        'color: #0077f8aa',
         new Date().getTime() - HDT.fileLoaded.startTime
     );
     HDT.fileLoaded.startTime = new Date().getTime();
@@ -20,6 +20,11 @@ HDT.getCurrentUser = async function() {
     if (HDT.getCurrentUser.user !== undefined) {
         // User is already cached
         return HDT.getCurrentUser.user;
+    } else if (HDT.getCurrentUser.user === null) {
+        // User is locked
+        while (!HDT.getCurrentUser.user) {
+            await new Promise(resolve => setTimeout(resolve, 10));
+        }
     }
 
     let res = await $A.get("/api/auth/user");
@@ -93,6 +98,56 @@ $A.get = async function(url, data) {
 
     data = data || {};
     data.method = "GET";
+    data.credentials = 'include';
+    const res = await fetch(url, data);
+    return res;
+};
+
+/**
+ * Send a PATCH request to the server using fetch API.
+ * @param {RequestInfo} url The url to send the request to.
+ * @param {RequestInit} data The data to send. Will be converted to JSON.
+ * @returns {Promise<Response>} A promise that resolves to the response.
+ */
+$A.patch = async function(url, data) {
+    console.log(">> %cPATCH %c%s", "color: #ffaa00", "color: inherit", url);
+
+    if (typeof url === "string") {
+        url = $A.baseURI + url;
+    } else if (url.url) {
+        url.url = $A.baseURI + url.url;
+    }
+
+    data = data || {};
+    data.method = "PATCH";
+    data.headers = data.headers || {};
+    data.headers["Content-Type"] = "application/json";
+    data.body = data.body ? JSON.stringify(data.body) : data.body;
+    data.credentials = 'include';
+    const res = await fetch(url, data);
+    return res;
+};
+
+/**
+ * Send a PUT request to the server using fetch API.
+ * @param {RequestInfo} url The url to send the request to.
+ * @param {RequestInit} data The data to send. Will be converted to JSON.
+ * @returns {Promise<Response>} A promise that resolves to the response.
+ */
+$A.put = async function(url, data) {
+    console.log(">> %cPUT %c%s", "color: #ffaa00", "color: inherit", url);
+
+    if (typeof url === "string") {
+        url = $A.baseURI + url;
+    } else if (url.url) {
+        url.url = $A.baseURI + url.url;
+    }
+
+    data = data || {};
+    data.method = "PUT";
+    data.headers = data.headers || {};
+    data.headers["Content-Type"] = "application/json";
+    data.body = data.body ? JSON.stringify(data.body) : data.body;
     data.credentials = 'include';
     const res = await fetch(url, data);
     return res;

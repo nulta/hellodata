@@ -31,6 +31,6 @@ app.use("/", static_router)
 app.use("/", express.static(path.resolve(__dirname, "../client"), {extensions:["html"]}))
 app.use(errorhandler_middleware())
 
-app.listen(config.server_port, "localhost", () => {
+app.listen(config.server_port, config.server_host, () => {
     log.info("Server started on port", config.server_port)
 })
