@@ -1,4 +1,8 @@
 /**
+ * @typedef {{_id:string,name:string,email:string,meta:string}} UserData
+ */
+
+/**
  * 'Hello, Data!'
  * Global namespace for the client.
  */
@@ -16,16 +20,20 @@ HDT.fileLoaded = function(filename) {
     HDT.fileLoaded.startTime = new Date().getTime();
 };
 
+/**
+ * @returns {Promise<UserData>}
+ */
 HDT.getCurrentUser = async function() {
-    if (HDT.getCurrentUser.user !== undefined) {
-        // User is already cached
-        return HDT.getCurrentUser.user;
-    } else if (HDT.getCurrentUser.user === null) {
+    if (HDT.getCurrentUser.user === 0) {
         // User is locked
         while (!HDT.getCurrentUser.user) {
             await new Promise(resolve => setTimeout(resolve, 10));
         }
+    } else if (HDT.getCurrentUser.user !== undefined) {
+        // User is already cached
+        return HDT.getCurrentUser.user;
     }
+    HDT.getCurrentUser.user = 0 // Lock the user
 
     let res = await $A.get("/api/auth/user");
     if (res.status === 200) {
@@ -38,6 +46,23 @@ HDT.getCurrentUser = async function() {
         return null;
     }
 };
+
+/**
+ * @returns {Promise<Record<any,any>>} User.meta
+ */
+HDT.getUserMeta = async function() {
+    let user = await HDT.getCurrentUser();
+    let meta;
+
+    if (!user) return {};
+    try {
+        meta = JSON.parse(user.meta);
+    } catch (e) {
+        console.warn("User meta is not a valid JSON\n", e);
+        meta = {};
+    }
+    return meta
+}
 
 HDT.logout = async function() {
     let res = await $A.post("/api/auth/logout");
@@ -207,6 +232,19 @@ $(async() => {
                 })
             })
         }
+    }
+})
+
+// Metadata Parsing
+$(async() => {
+    let meta = await HDT.getUserMeta()
+
+    // meta.bg
+    if (meta.bg) {
+        $(document.body).css("background-image", meta.bg)
+    } else if (meta.bgcolor) {
+        $(document.body).css("background-image", null)
+        $(document.body).css("background-color", meta.bgcolor)
     }
 })
 
