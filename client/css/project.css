@@ -64,7 +64,6 @@
 
 .main-container:focus {
     border-color: #00ffaa;
-    border-width: 2px;
 }
 
 .main-container h1 {
@@ -90,7 +89,14 @@ li#new-document-button {
     list-style-image: url("/img/icons/new.png");
 }
 
-@media (max-width: 1299px) {
+@media (max-width: 1280px) and (min-width:1001px) {
+    .project-nav {
+        border-radius: 0;
+        border-right: none;
+    }
+}
+
+@media (max-width: 1000px) {
     .main-layout {
         flex-direction: column;
         min-height: 100vh;
@@ -100,14 +106,18 @@ li#new-document-button {
         top: 0;
         overflow-y: auto;
         max-height: 40vh;
-        max-width: 90vw;
-        width: 100%;
-        margin: 20px auto 10px auto;
+        /* max-width: 280px; */
+        min-width: 100vw;
+        margin: 10px auto 0 auto;
         justify-self: center;
         flex-grow: unset;
+        border-radius: 0;
+        border-bottom: none;
     }
     .main-container {
         border-top-style: solid;
         min-height: unset;
+        min-width: 100vw;
+        margin: 0 auto;
     }
 }

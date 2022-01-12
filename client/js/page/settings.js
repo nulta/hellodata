@@ -5,7 +5,13 @@ HDT.getCurrentUser().then(user => {
     }
     $("#input-email").val(user.email);
     $("#input-name").val(user.name);
-    $("#input-meta").val(user.meta);
+    $("#input-meta").val(JSON.stringify(user.meta));
+})
+
+$("body").on("keydown", (e) => {
+    if (e.ctrlKey && e.key == "Enter") {
+        $("#button-submit").trigger("click")
+    }
 })
 
 $("#button-submit").on("click", async() => {
@@ -16,13 +22,13 @@ $("#button-submit").on("click", async() => {
 
     // Try parse meta
     try {
-        JSON.parse(meta);
+        meta = JSON.parse(meta);
     } catch (e) {
-        let go = confirm("메타데이터가 올바른 JSON 형식이 아닌 것 같습니다. 정말 저장하시겠습니까?");
-        if (!go) return;
+        alert("메타데이터가 올바른 JSON 형식이 아닙니다.");
+        return;
     }
 
-    $A.patch(`/api/users/${id}`, {
+    Ajax.patch(`/api/users/${id}`, {
         body: {
             "name": name,
             "meta": meta
@@ -38,5 +44,3 @@ $("#button-submit").on("click", async() => {
         }
     })
 })
-
-HDT.fileLoaded("projectlist.js");

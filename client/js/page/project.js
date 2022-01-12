@@ -7,7 +7,7 @@ $Page.projectInfo = null;
     $Page.projectId = splitted[splitted.length - 1];
 
     // Get the information
-    $A.get(`/api/projects/${$Page.projectId}`).then(async(res) => {
+    Ajax.get(`/api/projects/${$Page.projectId}`).then(async(res) => {
         res.json().then(data => {
             $Page.projectInfo = data;
             $Page.updateDataValue()
@@ -16,7 +16,7 @@ $Page.projectInfo = null;
 })();
 
 $Page.reloadDocumentList = async function() {
-    let docs = await $A.get(`/api/projects/${$Page.projectId}/documents`);
+    let docs = await Ajax.get(`/api/projects/${$Page.projectId}/documents`);
     docs = await docs.json();
     $("#project-nav-content").empty();
     docs.forEach(doc => {
@@ -30,7 +30,7 @@ $Page.reloadDocumentList = async function() {
 }
 
 $Page.renderDocument = async function(docId) {
-    $A.get(`/api/projects/${$Page.projectId}/documents/${docId}`, {})
+    Ajax.get(`/api/projects/${$Page.projectId}/documents/${docId}`, {})
         .then(async(res) => {
             res = await res.json();
             $("#main-container").attr("contenteditable", "true").html(res.content);
@@ -59,7 +59,7 @@ $Page.save = function() {
         // Invalid docId
         return;
     }
-    $A.patch(`/api/projects/${$Page.projectId}/documents/${docId}`, {
+    Ajax.patch(`/api/projects/${$Page.projectId}/documents/${docId}`, {
         body: {
             content: content
         }
@@ -91,7 +91,7 @@ $("#new-document-button").on("click", () => {
     let filename = prompt("문서 이름을 입력해주세요.");
     if (!filename) return;
 
-    $A.post(`/api/projects/${$Page.projectId}/documents`, {
+    Ajax.post(`/api/projects/${$Page.projectId}/documents`, {
         body: {
             name: filename,
             path: "/",
@@ -124,4 +124,3 @@ $(window).on("beforeunload", () => {
 
 $($Page.reloadDocumentList)
 $($Page.handleHash)
-HDT.fileLoaded("projectlist.js");

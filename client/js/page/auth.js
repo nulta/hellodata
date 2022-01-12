@@ -48,7 +48,7 @@ $("#button-login").on("click", () => {
     }
 
     // Fire ajax request
-    $A.post("/api/auth/login", { body: { email: email, password: password } })
+    Ajax.post("/api/auth/login", { body: { email: email, password: password } })
         .then(async res => {
             if (res.status === 200) {
                 let data = await res.json();
@@ -77,7 +77,7 @@ $("#button-register").on("click", () => {
     }
 
     // Fire ajax request
-    $A.post("/api/auth/register", { body: { email: email, name: name, password: password } })
+    Ajax.post("/api/auth/register", { body: { email: email, name: name, password: password } })
         .then(async res => {
             if (res.status === 200) {
                 console.log("OK!");
@@ -105,5 +105,3 @@ $(window).on("hashchange", () => {
 if (location.hash == "#register") {
     $("#tab-register").trigger("click");
 }
-
-HDT.fileLoaded("auth.js");

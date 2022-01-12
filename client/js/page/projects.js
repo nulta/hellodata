@@ -1,5 +1,3 @@
-// $Page.requireAuth();
-
 HDT.getCurrentUser().then(user => {
     if (!user) {
         // Login required to create a project
@@ -21,7 +19,7 @@ $Page.addProjectInfo = function(id, name, desc, ownerName, isPublic) {
     project.appendTo($("#project-list"))
 }
 
-$A.get("/api/projects")
+Ajax.get("/api/projects")
     .then(async res => {
         let data = await res.json()
         data.forEach(d => {
@@ -34,8 +32,8 @@ $("#button-create-project").on("click", () => {
     let name = prompt("프로젝트 이름을 입력하세요.");
     if (!name) return;
     let desc = prompt("프로젝트 설명을 입력하세요.");
-    let public = confirm("공개 프로젝트로 생성하시겠습니까? (취소: 아니오, 확인: 예)");
-    $A.post("/api/projects", { body: { name: name, desc: desc, public: public } })
+    let isPublic = confirm("공개 프로젝트로 생성하시겠습니까? (취소: 아니오, 확인: 예)");
+    Ajax.post("/api/projects", { body: { name: name, desc: desc, public: isPublic } })
         .then(async res => {
             if (res.status === 200) {
                 let data = await res.json();
@@ -47,5 +45,3 @@ $("#button-create-project").on("click", () => {
             }
         })
 });
-
-HDT.fileLoaded("projectlist.js");
