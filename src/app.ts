@@ -32,5 +32,5 @@ app.use("/", express.static(path.resolve(__dirname, "../client"), {extensions:["
 app.use(errorhandler_middleware())
 
 app.listen(config.server_port, config.server_host, () => {
-    log.info("Server started on port", config.server_port)
+    log.info(`Server started on ${config.server_host}:${config.server_port}`)
 })

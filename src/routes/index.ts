@@ -1,6 +1,7 @@
 import fs from "fs"
 import path from "path"
 import log from "@libs/log"
+import color from "@libs/ansicolor"
 import {Router} from "express"
 const router = Router()
 
@@ -17,7 +18,7 @@ fs.readdirSync(routerPath).forEach(file => {
     if (file.endsWith(".ts") || file.endsWith(".js")) {
         if (file === currentFile)
             return
-        log.info("Loading route: " + file)
+        log.info(`Loading route: ${color.Green}${file}`)
         const route = require(path.join(routerPath, file))
         router.use("/", route.default)
     }

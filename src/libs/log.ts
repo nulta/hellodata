@@ -12,7 +12,7 @@ function padZero(num: number): string {
 function prefix(color?: Color): string {
     color = color || Color.DimGrey
     var t = new Date()
-    return color + `[${padZero(t.getHours())}:${padZero(t.getMinutes())}:${padZero(t.getSeconds())}] ` + Color.Reset
+    return Color.Reset + color + `[${padZero(t.getHours())}:${padZero(t.getMinutes())}:${padZero(t.getSeconds())}] ` + Color.Reset
 }
 
 function fileprefix(): string {
