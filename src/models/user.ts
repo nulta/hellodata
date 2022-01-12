@@ -37,7 +37,8 @@ const User = new mongoose.Schema({
 
     meta: {
         type: Schema.Types.Mixed,
-        default: {}
+        default: {},
+        validate: (value: any) => typeof value === "object"
     },
 }, {
     timestamps: true,
