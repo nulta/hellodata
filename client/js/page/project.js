@@ -18,13 +18,13 @@ $Page.projectInfo = null;
 $Page.reloadDocumentList = async function() {
     let docs = await Ajax.get(`/api/projects/${$Page.projectId}/documents`);
     docs = await docs.json();
+    docs = docs.sort((a, b) => { return (a.path + a.name).localeCompare(b.path + b.name) });
+
     $("#project-nav-content").empty();
     docs.forEach(doc => {
         let docId = doc._id.split("/")[1]
         $("#project-nav-content").append(
-            $("<li>").append(
-                $("<a>").text(doc.name).attr("href", `#${docId}`)
-            )
+            $("<a class='project-nav-document'>").text(doc.path.slice(1) + doc.name).attr("href", `#${docId}`)
         )
     });
 }

@@ -84,9 +84,16 @@ a:hover {
     font-weight: 500;
 }
 
-li#new-document-button {
-    /* content: "[+] "; */
-    list-style-image: url("/img/icons/new.png");
+a.project-nav-document {
+    display: block;
+    padding: 2px 4px;
+    background-color: #333;
+    border-radius: 5px;
+    margin-bottom: 3px;
+}
+
+#new-document-button {
+    float: right;
 }
 
 @media (max-width: 1280px) and (min-width:1001px) {
