@@ -101,4 +101,29 @@ Ajax.put = async function(url, data) {
     return res;
 };
 
+/**
+ * Send a DELETE request to the server using fetch API.
+ * @param {RequestInfo} url The url to send the request to.
+ * @param {RequestInit} data The data to send. Will be converted to JSON.
+ * @returns {Promise<Response>} A promise that resolves to the response.
+ */
+Ajax.delete = async function(url, data) {
+    console.log(">> %cDELETE %c%s", "color: #b34045", "color: inherit", url);
+
+    if (typeof url === "string") {
+        url = Ajax.baseURI + url;
+    } else if (url.url) {
+        url.url = Ajax.baseURI + url.url;
+    }
+
+    data = data || {};
+    data.method = "DELETE";
+    data.headers = data.headers || {};
+    data.headers["Content-Type"] = "application/json";
+    data.body = data.body ? JSON.stringify(data.body) : data.body;
+    data.credentials = 'include';
+    const res = await fetch(url, data);
+    return res;
+};
+
 export default Ajax;

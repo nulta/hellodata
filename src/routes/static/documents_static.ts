@@ -5,7 +5,7 @@ const router = express.Router()
 /**
  * GET /projects/:projectId
  */
-router.get("/projects/:projectId", (req, res) => {
+router.get("/projects/:projectId/:documentId?", (req, res) => {
     res.sendFile(path.resolve(__dirname,"../../../client/project.htm"))
 })
 

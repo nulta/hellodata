@@ -39,7 +39,6 @@ const Document = new mongoose.Schema({
         type: String,
         default: "/",
         trim: true,
-        lowercase: true,
         match: [/^\/([a-z0-9-_\/]+?\/)?$/, "Invalid document path"],
         maxlength: [255, "Document path is too long"]
     },

@@ -73,13 +73,13 @@ HDT.contextMenu = function(x, y, data) {
     $("#context-menu-container").addClass("active");
 
     if (x + menu.width() > window.innerWidth) {
-        x = x - menu.width();
+        x = window.innerWidth - menu.width();
         menu.css("left", x);
     }
 
-    $("#context-menu-container")[0].onclick = function(ev) {
-        $(this).removeClass("active");
-    }
+    $("body").one("click", (ev) => {
+        $("#context-menu-container").removeClass("active");
+    })
 }
 
 HDT.requireAuth = async function() {

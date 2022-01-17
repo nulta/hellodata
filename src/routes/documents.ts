@@ -2,6 +2,7 @@ import Document from "@models/document"
 import Project from "@models/project"
 import {Router} from "express"
 import filterObject from "@libs/filter_object"
+import authRequired from "@middlewares/authrequired"
 const router = Router()
 
 // /api/projects/:projectId/documents/:documentId
@@ -10,17 +11,17 @@ const router = Router()
  * POST /api/projects/:projectId/documents
  * Create a new document on a project
  */
-router.post("/projects/:projectId/documents", (req, res, next) => {
-
-    // TODO: add createdBy (current user)
-    
+router.post("/projects/:projectId/documents", authRequired(), (req, res, next) => {
     Document.createDocument({
         projectId: req.params.projectId,
         name: req.body.name,
         path: req.body.path,
         type: req.body.type,
         content: req.body.content,
-        meta: req.body.meta
+        meta: req.body.meta,
+
+        createdBy: req.user!._id,
+        updatedBy: req.user!._id,
     }).then(document => {
         res.json(document)
     }).catch(next)
@@ -68,15 +69,14 @@ router.get("/projects/:projectId/documents/:documentId", (req, res, next) => {
  * PATCH /projects/:projectId/documents/:documentId
  * Update a document
  */
-router.patch("/projects/:projectId/documents/:documentId", (req, res, next) => {
+router.patch("/projects/:projectId/documents/:documentId", authRequired(), (req, res, next) => {
     const projectId = req.params.projectId
     const documentId = req.params.documentId
     const projectDocumentId = `${projectId}/${documentId}`
 
     // Sanitize req.body
     req.body = filterObject(req.body, ["name", "path", "content", "meta"])
-
-    // TODO: set updatedBy (as current user)
+    req.body.updatedBy = req.user!._id
 
     Document.findByIdAndUpdate(projectDocumentId, req.body, {new: true})
         .select("_id name path type content meta")
@@ -91,6 +91,20 @@ router.patch("/projects/:projectId/documents/:documentId", (req, res, next) => {
             // filtered with select()
             res.json(document)
         }).catch(next)
+})
+
+/**
+ * DELETE /projects/:projectId/documents/:documentId
+ * Delete a document
+ */
+router.delete("/projects/:projectId/documents/:documentId", authRequired(), (req, res, next) => {
+    const projectId = req.params.projectId
+    const documentId = req.params.documentId
+    const projectDocumentId = `${projectId}/${documentId}`
+
+    Document.findByIdAndDelete(projectDocumentId).then(document => {
+        res.json({ok: true})
+    }).catch(next)
 })
 
 export default router

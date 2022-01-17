@@ -5,6 +5,8 @@ export type DocumentCreateFields = {
     type: DocumentType
     content?: string
     meta?: Record<any,any>
+    createdBy?: string
+    updatedBy?: string
 }
 
 export type ProjectCreateFields = {

@@ -9,11 +9,13 @@ $(async() => {
             })
         } else {
             $(".current-user-info").text(user.name);
-            $(".current-user-info").on("click", (ev) => {
-                HDT.contextMenu(ev.clientX, ev.clientY, {
-                    "로그아웃": HDT.logout,
-                    "설정": () => { document.location = "/settings" }
-                })
+            $(".current-user-info").on("click", function(ev) {
+                HDT.contextMenu(ev.clientX, this.clientTop + this.clientHeight, {
+                        "로그아웃": HDT.logout,
+                        "설정": () => { document.location = "/settings" }
+                    })
+                    // Cancel event propagation (prevent click event on document)
+                return false;
             })
         }
     }

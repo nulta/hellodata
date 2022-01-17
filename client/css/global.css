@@ -230,6 +230,7 @@ button {
 
 #context-menu-container {
     display: none;
+    pointer-events: none;
 }
 
 #context-menu-container.active {
@@ -244,13 +245,17 @@ button {
 }
 
 .context-menu {
+    pointer-events: all;
     display: flex;
     flex-direction: column;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #222;
-    border: 1px solid #ddd;
+    background-color: #333;
+    border: 1px solid #555;
+    box-shadow: #000b 0px 0px 4px;
+    padding: 5px 0;
+    border-radius: 5px;
     z-index: 101;
     color: #ddd;
     width: fit-content;
@@ -261,9 +266,10 @@ button {
     border: none;
     padding: 2px 1em;
     margin: 0;
-    font-size: 1em;
+    font-size: 0.9em;
     color: #ddd;
     cursor: pointer;
+    text-align: left;
 }
 
 .context-menu>button:hover {

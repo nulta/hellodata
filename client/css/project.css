@@ -17,11 +17,14 @@
     flex-grow: 2;
     height: fit-content;
     max-width: 280px;
+    min-width: 280px;
     max-height: 90vh;
     overflow-y: auto;
     position: sticky;
     top: 20px;
     align-self: flex-start;
+    transition: top 0.3s ease-out;
+    transition-property: top, border-radius;
 }
 
 .project-nav h1 {
@@ -70,16 +73,20 @@
     font-size: 2em;
 }
 
-a {
+a,
+button.like-a {
     color: #00ffaa;
     text-decoration: none;
 }
 
-a:visited {
+a:visited,
+button.like-a:visited {
     color: #00ffaa;
+    text-decoration: none;
 }
 
-a:hover {
+a:hover,
+button.like-a:hover {
     /* text-decoration: #00ffaa55 underline; */
     font-weight: 500;
 }
@@ -92,6 +99,34 @@ a.project-nav-document {
     margin-bottom: 3px;
 }
 
+button.like-a {
+    display: inline;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+}
+
+.document-header {
+    background-color: #333;
+    /* border-radius: 5px; */
+    padding: 1em 15px;
+    margin-bottom: 30px;
+}
+
+.document-title {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.document-path {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.8em;
+    color: #aaa;
+}
+
 #new-document-button {
     float: right;
 }
@@ -100,6 +135,7 @@ a.project-nav-document {
     .project-nav {
         border-radius: 0;
         border-right: none;
+        top: 0;
     }
 }
 
