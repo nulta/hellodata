@@ -3,3 +3,6 @@ node_modules
 dist
 설계
 tsconfig.tsbuildinfo
+client/public/build
+.vscode
+.DS_Store
