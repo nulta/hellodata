@@ -8,7 +8,8 @@
         "build": "npm run build-client && npm run build-server",
         "clear-dist": "rm -rf dist/* && rm -rf client/public/build/*",
         "start": "node -r module-alias/register dist/app.js",
-        "dev": "npx nodemon --exec \"ts-node -r tsconfig-paths/register src/app.ts\" --watch src -e ts",
+        "dev-server": "npx nodemon --exec \"ts-node -r tsconfig-paths/register src/app.ts\" --watch src -e ts",
+        "dev-client": "cd client && rollup -c -w",
         "build-client": "cd client && rollup -c",
         "build-server": "tsc"
     },
@@ -22,7 +23,7 @@
         "express-session": "^1.17.2",
         "module-alias": "^2.2.2",
         "mongoose": "^6.1.1",
-        "nanoid": "^3.1.30",
+        "nanoid": "^3.2.0",
         "passport": "^0.5.2",
         "passport-local": "^1.0.0"
     },

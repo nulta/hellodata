@@ -34,5 +34,8 @@
             "@classes/*": ["classes/*"],
             "@middlewares/*": ["middlewares/*"],
         }
+    },
+    "ts-node": {
+        "files": true
     }
 }
