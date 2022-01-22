@@ -28,7 +28,7 @@ app.use(passport.session())
 app.use(log_middleware())
 app.use("/api/", api_router)
 app.use("/", static_router)
-app.use("/", express.static(path.resolve(__dirname, "../client"), {extensions:["html"]}))
+app.use("/", express.static(path.resolve(__dirname, "../client/public"), {extensions:["html"]}))
 app.use(errorhandler_middleware())
 
 app.listen(config.server_port, config.server_host, () => {
