@@ -57,6 +57,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@lit/reactive-element", [\
+        ["npm:1.3.1", {\
+          "packageLocation": "./.yarn/cache/@lit-reactive-element-npm-1.3.1-21cbe105ae-6aea597555.zip/node_modules/@lit/reactive-element/",\
+          "packageDependencies": [\
+            ["@lit/reactive-element", "npm:1.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@mapbox/node-pre-gyp", [\
         ["npm:1.0.9", {\
           "packageLocation": "./.yarn/cache/@mapbox-node-pre-gyp-npm-1.0.9-7ef8e73557-1b9c4c87a6.zip/node_modules/@mapbox/node-pre-gyp/",\
@@ -273,6 +282,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/serve-static", "npm:1.13.10"],\
             ["@types/mime", "npm:1.3.2"],\
             ["@types/node", "npm:17.0.23"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/trusted-types", [\
+        ["npm:2.0.2", {\
+          "packageLocation": "./.yarn/cache/@types-trusted-types-npm-2.0.2-035cb17c5e-3371eef5f1.zip/node_modules/@types/trusted-types/",\
+          "packageDependencies": [\
+            ["@types/trusted-types", "npm:2.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -535,7 +553,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["workspace:client", {\
           "packageLocation": "./client/",\
           "packageDependencies": [\
-            ["client", "workspace:client"]\
+            ["client", "workspace:client"],\
+            ["lit", "npm:2.2.2"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -1166,6 +1185,39 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/kareem-npm-2.3.5-ce11fa6c90-eb1b996937.zip/node_modules/kareem/",\
           "packageDependencies": [\
             ["kareem", "npm:2.3.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lit", [\
+        ["npm:2.2.2", {\
+          "packageLocation": "./.yarn/cache/lit-npm-2.2.2-0148bef4ac-786d5e493a.zip/node_modules/lit/",\
+          "packageDependencies": [\
+            ["lit", "npm:2.2.2"],\
+            ["@lit/reactive-element", "npm:1.3.1"],\
+            ["lit-element", "npm:3.2.0"],\
+            ["lit-html", "npm:2.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lit-element", [\
+        ["npm:3.2.0", {\
+          "packageLocation": "./.yarn/cache/lit-element-npm-3.2.0-e51df048f2-64bd0f05f7.zip/node_modules/lit-element/",\
+          "packageDependencies": [\
+            ["lit-element", "npm:3.2.0"],\
+            ["@lit/reactive-element", "npm:1.3.1"],\
+            ["lit-html", "npm:2.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lit-html", [\
+        ["npm:2.2.2", {\
+          "packageLocation": "./.yarn/cache/lit-html-npm-2.2.2-a75cfb8115-f5291201f4.zip/node_modules/lit-html/",\
+          "packageDependencies": [\
+            ["lit-html", "npm:2.2.2"],\
+            ["@types/trusted-types", "npm:2.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
