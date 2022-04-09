@@ -1,8 +1,8 @@
 .env
 node_modules
-dist
+server/dist
+client/dist
 tsconfig.tsbuildinfo
-client/public/build
 .vscode
 .DS_Store
 
