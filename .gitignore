@@ -1,8 +1,16 @@
 .env
 node_modules
 dist
-설계
 tsconfig.tsbuildinfo
 client/public/build
 .vscode
 .DS_Store
+
+# Yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
