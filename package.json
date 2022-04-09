@@ -1,50 +1,18 @@
 {
     "name": "hellodata",
     "version": "1.0.0",
-    "description": "",
-    "main": "app.js",
-    "scripts": {
-        "test": "./node_modules/.bin/mocha -r ts-node/register -r tsconfig-paths/register -r test/helpers/hooks.ts ./test/*.ts ./test/**/*.ts ",
-        "build": "tsc",
-        "clear-dist": "rm -rf dist/*",
-        "start": "node -r module-alias/register dist/app.js",
-        "dev": "npx nodemon --exec \"ts-node -r tsconfig-paths/register src/app.ts\" --watch src -e ts"
-    },
+    "packageManager": "yarn@3.2.0",
     "author": "HelloWorld makers",
-    "license": "MIT License",
-    "private": false,
-    "dependencies": {
-        "bcrypt": "^5.0.1",
-        "cors": "^2.8.5",
-        "dotenv": "^10.0.0",
-        "express": "^4.17.1",
-        "express-session": "^1.17.2",
-        "module-alias": "^2.2.2",
-        "mongoose": "^6.1.1",
-        "nanoid": "^3.2.0",
-        "passport": "^0.5.2",
-        "passport-local": "^1.0.0"
+    "license": "MIT",
+    "private": true,
+    "repository": "https://github.com/un5450/hellodata.git",
+    "workspaces": {
+        "packages": [
+            "client",
+            "server"
+        ]
     },
     "devDependencies": {
-        "@types/bcrypt": "^5.0.0",
-        "@types/cors": "^2.8.12",
-        "@types/express": "^4.17.13",
-        "@types/express-session": "^1.17.4",
-        "@types/jquery": "^3.5.10",
-        "@types/mocha": "^9.0.0",
-        "@types/node": "^16.11.7",
-        "@types/passport": "^1.0.7",
-        "@types/passport-local": "^1.0.34",
-        "tsconfig-paths": "^3.11.0",
-        "typescript": "^4.4.4"
-    },
-    "_moduleAliases": {
-        "@libs": "dist/libs",
-        "@models": "dist/models",
-        "@utils": "dist/utils",
-        "@routes": "dist/routes",
-        "@classes": "dist/classes",
-        "@middlewares": "dist/middlewares"
-    },
-    "repository": "https://github.com/un5450/hellodata.git"
+        "typescript": "^4.6.3"
+    }
 }
