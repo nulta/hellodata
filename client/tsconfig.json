@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        /* Language and Environment */
+        "target": "es6",
+        
+        /* Modules */
+        "module": "CommonJS",
+        "rootDir": ".",
+        "outDir": "./dist",
+        
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "noImplicitAny": true,
+
+        "baseUrl": ".",
+    }
+}
