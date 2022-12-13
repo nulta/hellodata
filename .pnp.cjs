@@ -2657,12 +2657,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["passport", [\
-        ["npm:0.5.2", {\
-          "packageLocation": "./.yarn/cache/passport-npm-0.5.2-50fdd6d9c8-be17a64a06.zip/node_modules/passport/",\
+        ["npm:0.6.0", {\
+          "packageLocation": "./.yarn/cache/passport-npm-0.6.0-0a57682d5b-ef932ad671.zip/node_modules/passport/",\
           "packageDependencies": [\
-            ["passport", "npm:0.5.2"],\
+            ["passport", "npm:0.6.0"],\
             ["passport-strategy", "npm:1.0.0"],\
-            ["pause", "npm:0.0.1"]\
+            ["pause", "npm:0.0.1"],\
+            ["utils-merge", "npm:1.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2936,7 +2937,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["module-alias", "npm:2.2.2"],\
             ["mongoose", "npm:6.8.0"],\
             ["nanoid", "npm:3.3.2"],\
-            ["passport", "npm:0.5.2"],\
+            ["passport", "npm:0.6.0"],\
             ["passport-local", "npm:1.0.0"],\
             ["tsconfig-paths", "npm:3.14.1"]\
           ],\
