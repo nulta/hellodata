@@ -9,7 +9,7 @@
         "module-alias": "^2.2.2",
         "mongoose": "^6.4.6",
         "nanoid": "^3.2.0",
-        "passport": "^0.5.2",
+        "passport": "^0.6.0",
         "passport-local": "^1.0.0"
     },
     "devDependencies": {
